@@ -18,6 +18,7 @@ class User(AbstractUser):
 class Author(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    alias = models.CharField(max_length=50, null=True, blank=True)
 
 class Reader(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)

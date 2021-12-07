@@ -1,11 +1,11 @@
 from rest_framework import routers
 
-from .views import UserViewSet
+from .views import AuthorViewSet
 
-user_router = routers.SimpleRouter()
-user_router.register(r'user', UserViewSet)
+author_router = routers.SimpleRouter()
+author_router.register(r'user/author', AuthorViewSet)
 
 
 urlpatterns = [
 
-] + user_router.urls
+] + author_router.urls

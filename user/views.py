@@ -8,13 +8,16 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Local imports
-from .serializers import GenericUserSerializer
-from .models import User
+from .serializers import GenericUserSerializer, GenericAuthorSerializer
+from .models import User, Author
+from utils.Paginator import CustomPagination
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class AuthorViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
+    pagination_class = CustomPagination
     queryset = User.objects.all()
     serializer_class = GenericUserSerializer
+
