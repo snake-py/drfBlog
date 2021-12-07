@@ -14,10 +14,6 @@ class User(AbstractUser):
     is_admin = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
 
-    # def hash_password(self, password):
-    #     self.set_password(password)
-    #     self.save()
-    
 
 class Author(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
