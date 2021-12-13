@@ -1,7 +1,6 @@
 # Base and Django imports
 from django.db import models
 from django.shortcuts import render
-
 # Third party imports
 from drf_spectacular.utils import extend_schema, PolymorphicProxySerializer
 from rest_framework import pagination, status, permissions, viewsets
@@ -9,8 +8,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Local imports
-from .models import Article, ArticleTag, Comment
-from .serializers import GenericTagSerializer, GenericArticleSerializer, MixedArticleSerializer, GenericCommentSerializer
+from ..models import Article, ArticleTag, Comment
+from ..serializers import GenericTagSerializer, GenericArticleSerializer, MixedArticleSerializer, GenericCommentSerializer
 from utils.Paginator import CustomPagination
 
 class ArticleViewSet(viewsets.ModelViewSet):
@@ -24,7 +23,6 @@ class ArticleViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return MixedArticleSerializer
-        
         else:
             return GenericArticleSerializer
 
