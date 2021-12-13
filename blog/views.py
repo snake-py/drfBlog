@@ -9,8 +9,8 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # Local imports
-from .models import Article, Comment
-from .serializers import GenericArticleSerializer
+from .models import Article, ArticleTag, Comment
+from .serializers import GenericTagSerializer, GenericArticleSerializer, MixedArticleSerializer, GenericCommentSerializer
 from utils.Paginator import CustomPagination
 
 class ArticleViewSet(viewsets.ModelViewSet):
@@ -20,3 +20,27 @@ class ArticleViewSet(viewsets.ModelViewSet):
     pagination_class = CustomPagination
     queryset = Article.objects.all()
     serializer_class = GenericArticleSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return MixedArticleSerializer
+        
+        else:
+            return GenericArticleSerializer
+
+class CommentViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to add and edit comments.
+    """
+    queryset = Comment.objects.all()
+    serializer_class = GenericCommentSerializer
+    pagination_class = CustomPagination
+
+
+class TagViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to add or edit tags.
+    """
+    queryset = ArticleTag.objects.all()
+    serializer_class = GenericTagSerializer
+    pagination_class = CustomPagination

@@ -17,7 +17,7 @@ class Article(models.Model):
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    # article_tag = models.ManyToManyField(ArticleTag, on_delete=models.CASCADE, null=True)
+    tags = models.ManyToManyField(ArticleTag, null=True)
 
 class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
