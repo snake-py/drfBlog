@@ -21,7 +21,7 @@ class GenericCommentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class MixedArticleSerializer(serializers.ModelSerializer):
-    tags = GenericTagSerializer(many=True)
+    tags = GenericTagSerializer(many=True, required=False)
     comment_set = GenericCommentSerializer(many=True, read_only=True)
     class Meta:
         model = Article
