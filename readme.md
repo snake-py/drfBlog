@@ -6,8 +6,7 @@ It has the option to create different users and assign different users different
 
 The system can be used headless of with an admin panel - for now only django admin panel  is available. 
 
-# Set Up for now
-
+# Current Set Up
 
 ```bash
 virtualenv venv
@@ -20,6 +19,7 @@ source venv/bin/activate
 or 
 
 Windows
+
 ```bash	
 venv\Scripts\activate
 ```
@@ -34,5 +34,24 @@ python manage.py migrate
 
 
 ```bash	
+python manage.py runserver
+```
+
+
+## Start test suit 
+
+requires nodemon installed 
+
+
+unix: 
+
+```bash	
+nodemon --ext py --exec "source venv/bin/activate && python manage.py test"
+```
+
+windows:
+
+```bash	
 nodemon --ext py --exec "venv\Scripts\activate && python manage.py test"
 ```
+
