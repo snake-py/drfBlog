@@ -19,6 +19,9 @@ class Article(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(ArticleTag, null=True, blank=True)
 
+    class Meta:
+        ordering = ('-created_at',)
+
 class Comment(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     article = models.ForeignKey(Article, on_delete=models.CASCADE, null=True)
