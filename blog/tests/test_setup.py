@@ -13,7 +13,6 @@ class TestSetupArticle(APITestCase):
     
     def setUp(self):
         self.article_urls = reverse('article-list')
-        self.article_single_pk = reverse('article-detail', kwargs={'pk': 1})
         return super().setUp()
 
     def tearDown(self):

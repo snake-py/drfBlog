@@ -1,5 +1,5 @@
-from urllib import response
 from .test_setup import TestSetupArticle
+from django.urls import reverse
 from blog.models import Article
 
 class TestArticleViews(TestSetupArticle):
@@ -24,8 +24,6 @@ class TestArticleViews(TestSetupArticle):
     def test_get_single_article(self):
         self.create_article(self.title, self.content)
         article_id = Article.objects.get(title=self.title).id
-        print(article_id)
-        print(self.article_single_pk)
-        response = self.client.get(self.article_single_pk, {'id': article_id})
-        print(response)
+        self.article_single_pk = reverse('article-detail', kwargs={'pk': article_id})
+        response = self.client.get(self.article_single_pk)
         self.assertEqual(response.status_code, 200)
