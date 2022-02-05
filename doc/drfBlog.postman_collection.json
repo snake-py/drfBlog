@@ -1,0 +1,108 @@
+{
+	"info": {
+		"_postman_id": "ee1de522-af96-493c-9a96-d9f4711ad807",
+		"name": "drfBlog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "article",
+			"item": [
+				{
+					"name": "ArticleList",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/article",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"article"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SingleArticleId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/api/article/87928ebf-0fec-48ae-8646-d925f7f0113c",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"87928ebf-0fec-48ae-8646-d925f7f0113c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateArticle",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"this is a title\",\r\n    \"content\": \"this is a content\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/article/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"article",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateArticle",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"this is a title changed\",\r\n    \"content\": \"this is a content\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/article/74d6f232-7cc6-47c8-b3c2-9d5431fbcc06/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"article",
+								"74d6f232-7cc6-47c8-b3c2-9d5431fbcc06",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
