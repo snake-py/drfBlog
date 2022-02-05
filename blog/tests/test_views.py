@@ -27,3 +27,4 @@ class TestArticleViews(TestSetupArticle):
         self.article_single_pk = reverse('article-detail', kwargs={'pk': article_id})
         response = self.client.get(self.article_single_pk)
         self.assertEqual(response.status_code, 200)
+
