@@ -1,6 +1,4 @@
 # Base and Django imports
-from django.db import models
-from django.shortcuts import render
 # Third party imports
 from drf_spectacular.utils import extend_schema, PolymorphicProxySerializer
 from rest_framework import pagination, status, permissions, viewsets
@@ -35,10 +33,49 @@ class CommentViewSet(viewsets.ModelViewSet):
     pagination_class = CustomPagination
 
 
-class TagViewSet(viewsets.ModelViewSet):
+# class TagViewSet(viewsets.ModelViewSet):
+#     """
+#     API endpoint that allows users to add or edit tags.
+#     """
+#     queryset = ArticleTag.objects.all()
+#     serializer_class = GenericTagSerializer
+#     pagination_class = CustomPagination
+
+
+class TagView(APIView):
     """
     API endpoint that allows users to add or edit tags.
     """
-    queryset = ArticleTag.objects.all()
-    serializer_class = GenericTagSerializer
-    pagination_class = CustomPagination
+    def get(self, request):
+        tags = ArticleTag.objects.all()
+        serializer = GenericTagSerializer(tags, many=True)
+        if serializer.is_valid():
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def post(self, request):
+        serializer = GenericTagSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def put(self, request, pk):
+        tag = ArticleTag.objects.get(pk=pk)
+        serializer = GenericTagSerializer(tag, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        tag = ArticleTag.objects.get(pk=pk)
+        tag.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+        
