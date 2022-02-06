@@ -54,4 +54,33 @@ windows:
 ```bash	
 nodemon --ext py --exec "venv\Scripts\activate && python manage.py test"
 ```
+Utilize coverage to get the test coverage report:
 
+```bash	
+coverage run manage.py test
+```
+
+```bash	
+coverage report
+```	
+Get idea what needs more testing
+```bash	
+coverage html
+```	
+open the html report in the default browser - with live-server then you have also hot reload. 
+
+
+Could all be done in one go:
+
+```bash	
+nodemon --ext py --exec "venv\Scripts\activate && coverage run manage.py test && coverage html"
+```
+
+# JSON Field Article
+
+The example of how a json field can be used in the model. See the example <a href="./doc/article.json">json</a>
+This Json could be parsed to the below html:
+```html
+<h1 class="test" id="test"><span id="main-title">Some title</span></h1>
+<p class="test" id="test-p">Some text</p>
+```	 

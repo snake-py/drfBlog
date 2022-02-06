@@ -1,0 +1,48 @@
+{
+    "html": [
+        {
+            "tag": "h1",
+            "attributes": [
+                {
+                    "class": [
+                        "test"
+                    ]
+                },
+                {
+                    "id": [
+                        "test-title"
+                    ]
+                }
+            ],
+            "innerHTML": [
+                {
+                    "tag": "span",
+                    "attributes": [
+                        {
+                            "id": [
+                                "main-title"
+                            ]
+                        }
+                    ],
+                    "innerHtml": "Some title"
+                }
+            ]
+        },
+        {
+            "tag": "p",
+            "attributes": [
+                {
+                    "class": [
+                        "test"
+                    ]
+                },
+                {
+                    "id": [
+                        "test-p"
+                    ]
+                }
+            ],
+            "innerHTML": "First paragraph"
+        }
+    ]
+}

@@ -18,6 +18,9 @@ class Article(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(ArticleTag, null=True, blank=True)
+    
+    def __str__(self):
+        return self.title
 
     class Meta:
         ordering = ('-created_at',)
