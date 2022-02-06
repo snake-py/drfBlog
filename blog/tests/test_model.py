@@ -1,10 +1,16 @@
 from turtle import title
 from .test_setup import TestSetupArticle
 from blog.models import Article, ArticleTag
+from model_bakery import baker
+from pprint import pprint
 
 class ArticleModelTest (TestSetupArticle):
     title = 'Test Article'
     content = 'Test Content'
+
+    def test_bake_model(self, **kwargs):
+        self.article = baker.make('blog.Article', **kwargs)
+        pprint(self.article.__dict__)
 
     def create_tag(self, tag='Test Tag'):
         tag = ArticleTag(tag=tag)
